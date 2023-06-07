@@ -1,34 +1,126 @@
+import { useState } from "react";
+import Logo from "../Components/Logo";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
+    const [isOpen, setIsOpen] = useState(false);
+
+    const toggleNavbar = () => {
+      setIsOpen(!isOpen);
+    };
     return (
-        <div className="navbar bg-base-100">
-  <div className="navbar-start">
-    <div className="dropdown">
-      <label tabIndex={0} className="btn btn-ghost btn-circle">
-        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h7" /></svg>
-      </label>
-      <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
-        <li><a>Homepage</a></li>
-        <li><a>Portfolio</a></li>
-        <li><a>About</a></li>
-      </ul>
-    </div>
-  </div>
-  <div className="navbar-center">
-    <a className="btn btn-ghost normal-case text-xl">daisyUI</a>
-  </div>
-  <div className="navbar-end">
-    <button className="btn btn-ghost btn-circle">
-      <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
-    </button>
-    <button className="btn btn-ghost btn-circle">
-      <div className="indicator">
-        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" /></svg>
-        <span className="badge badge-xs badge-primary indicator-item"></span>
-      </div>
-    </button>
-  </div>
-</div>
+        <nav className="bg-blue-500">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-center justify-between h-16">
+            <div className="flex items-center">
+               <Link to='/'>
+               <div className="flex-shrink-0">
+               <Logo></Logo>
+              </div>
+               </Link>
+            </div>
+            <div className="flex-grow flex items-center justify-center">
+              <div className="hidden md:block">
+                <div className="ml-4 flex items-baseline space-x-4">
+                  <a
+                    href="#"
+                    className="text-white hover:text-gray-300 px-3 py-2 rounded-md text-sm font-medium"
+                  >
+                    Home
+                  </a>
+                  <a
+                    href="#"
+                    className="text-white hover:text-gray-300 px-3 py-2 rounded-md text-sm font-medium"
+                  >
+                    About
+                  </a>
+                  <a
+                    href="#"
+                    className="text-white hover:text-gray-300 px-3 py-2 rounded-md text-sm font-medium"
+                  >
+                    Services
+                  </a>
+                  <a
+                    href="#"
+                    className="text-white hover:text-gray-300 px-3 py-2 rounded-md text-sm font-medium"
+                  >
+                    Contact
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div className="-mr-2 flex md:hidden">
+              <button
+                onClick={toggleNavbar}
+                type="button"
+                className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
+                aria-controls="mobile-menu"
+                aria-expanded="false"
+              >
+                <span className="sr-only">Open main menu</span>
+                <svg
+                  className={`${isOpen ? 'hidden' : 'block'} h-6 w-6`}
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  aria-hidden="true"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M4 6h16M4 12h16M4 18h16"
+                  />
+                </svg>
+                <svg
+                  className={`${isOpen ? 'block' : 'hidden'} h-6 w-6`}
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  aria-hidden="true"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M6 18L18 6M6 6l12 12"
+                  />
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+        <div className={`${isOpen ? 'block' : 'hidden'} md:hidden`}>
+          <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+            <a
+              href="#"
+              className="text-white hover:text-gray-300 block px-3 py-2 rounded-md text-base font-medium"
+            >
+              Home
+            </a>
+            <a
+              href="#"
+              className="text-white hover:text-gray-300 block px-3 py-2 rounded-md text-base font-medium"
+            >
+              About
+            </a>
+            <a
+              href="#"
+              className="text-white hover:text-gray-300 block px-3 py-2 rounded-md text-base font-medium"
+            >
+              Services
+            </a>
+            <a
+              href="#"
+              className="text-white hover:text-gray-300 block px-3 py-2 rounded-md text-base font-medium"
+            >
+              Contact
+            </a>
+          </div>
+        </div>
+      </nav>
     );
 };
 
