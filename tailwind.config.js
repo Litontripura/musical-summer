@@ -11,21 +11,21 @@ export default {
         
 "primary": "#01075E",
         
-"secondary": "#7a46bf",
+"secondary": "#011627",
         
-"accent": "#d125ae",
+"accent": "#011627",
         
-"neutral": "",
+// "neutral": "",
         
-"base-100": "",
+// "base-100": "",
         
-"info": "",
+// "info": "",
         
-"success": "",
+// "success": "",
         
-"warning": "",
+// "warning": "",
         
-"error": "",
+// "error": "",
         },
       },
     ],
