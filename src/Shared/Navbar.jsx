@@ -12,19 +12,19 @@ const Navbar = () => {
 
   const navOptions = (
     <>
-      <li>
+      <li className="py-2 md:py-0 lg:py-0">
         <NavLink to='/'>Home</NavLink>
       </li>
-      <li>
+      <li className="py-2 md:py-0 lg:py-0">
         <NavLink to='/instructors'>Instructors</NavLink>
       </li>
-      <li>
+      <li className="py-2 md:py-0 lg:py-0">
         <NavLink to='/classes'>Classes</NavLink>
       </li>
-      <li>
+      <li className="py-2 md:py-0 lg:py-0">
         <NavLink to='/dashboard'>Dashboard</NavLink>
       </li>
-      <li>
+      <li className="py-2 md:py-0 lg:py-0">
         user
       </li>
     </>
