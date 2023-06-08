@@ -11,36 +11,30 @@ const Dashboard = () => {
   const navOptions = (
     <>
       <li className="py-2 md:py-0 lg:py-0">
-        <ActiveLink exact to="/" activeClassName="text-white">
-          Home
+        <ActiveLink exact to="adminHome" activeClassName="text-white">
+          Admin Home
         </ActiveLink>
       </li>
       <li className="py-2 md:py-0 lg:py-0">
-        <ActiveLink to="/instructors" activeClassName="text-white">
-          Instructors
+        <ActiveLink to="instructorsHome" activeClassName="text-white">
+          Instructors Home
         </ActiveLink>
       </li>
       <li className="py-2 md:py-0 lg:py-0">
-        <ActiveLink to="/classes" activeClassName="text-white">
-          Classes
+        <ActiveLink to="students" activeClassName="text-white">
+          Students Home
+        </ActiveLink>
+      </li>
+
+      <li className="py-2 md:py-0 lg:py-0">
+        <ActiveLink to="allusers" activeClassName="text-white">
+          all users
         </ActiveLink>
       </li>
    
-      <li className="py-2 md:py-0 lg:py-0">
-        <ActiveLink to="/dashboard" activeClassName="text-white">
-          Dashboard
-        </ActiveLink>
-      </li>
-     {
-      user ? <li>
-      <button onClick={handleLogout}>Logout</button>
-    </li> :  <li className="py-2 md:py-0 lg:py-0">
-      <ActiveLink to="/login" activeClassName="text-white">
-        Login
-      </ActiveLink>
-    </li>
-     }
-      <li className="py-2 md:py-0 lg:py-0">user</li>
+   
+    
+      
     </>
   );
     return (
@@ -56,9 +50,7 @@ const Dashboard = () => {
         <div className="drawer-side">
           <label htmlFor="my-drawer-2" className="drawer-overlay"></label> 
           <ul className="menu p-4 w-80 h-full text-base-content">
-            {/* Sidebar content here */}
-            <li><a>Sidebar Item 1</a></li>
-            <li><a>Sidebar Item 2</a></li>
+          {navOptions}
           </ul>
         
         </div>
