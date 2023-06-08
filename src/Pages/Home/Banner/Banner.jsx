@@ -1,29 +1,48 @@
-import "react-responsive-carousel/lib/styles/carousel.min.css";
-import { Carousel } from 'react-responsive-carousel';
 import { useEffect, useState } from "react";
 import Container from "../../../Shared/Container";
-
+import { Carousel } from 'react-responsive-carousel';
+import "react-responsive-carousel/lib/styles/carousel.min.css";
+import { useSpring, animated } from '@react-spring/web'
 
 const Banner = () => {
-   
-    return (
-       <Container>
-        <div className="mt-10">
+  const [bannerData, setBannerData] = useState([]);
+  const springs = useSpring({
+   from: { x: 0 },
+   to: { x: 100 },
+ })
+  useEffect(() => {
+    fetch("banner.json")
+      .then((response) => response.json())
+      .then((data) => setBannerData(data))
+      .catch((error) => console.log(error));
+  }, []);
+
+  return (
+    <Container>
+      <div className="mt-10">
         <Carousel className="">
-         
-         <div className="relative">
-            <img src='https://images.unsplash.com/photo-1519076976365-9c64dbd98317?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8cGlhbm8lMjBsZXNzb25zfGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60' alt="" />
-            <h1 className="absolute top-24 left-24 z-10 text-5xl font-bold text-primary shadow-lg">Piano Lessons</h1>
-         </div>
-         <div className="relative">
-            <img className="" src='https://images.unsplash.com/photo-1525201548942-d8732f6617a0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8Z3VpdGFyfGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60' alt="" />
-            <h1 className="absolute top-6 left-5 z-10">Guitar Lesson</h1>
-         </div>
-      
-     </Carousel>
-        </div>
-       </Container>
-    );
+          {bannerData.map((item, index) => (
+            <div className="relative" key={index}>
+              <img
+                src={item.picture}
+                alt={item.title}
+                className="banner-image h-50"
+              />
+              <div className="absolute top-0 left-0 w-full h-full flex flex-col justify-center items-center">
+                <div className="absolute inset-0 bg-black bg-opacity-50"></div>
+                <h1 className="text-5xl font-bold text-white relative z-10">
+                  {item.title}
+                </h1>
+                <p className="text-white font-bold w-30 relative z-10">
+                  {item.description}
+                </p>
+              </div>
+            </div>
+          ))}
+        </Carousel>
+      </div>
+    </Container>
+  );
 };
 
 export default Banner;

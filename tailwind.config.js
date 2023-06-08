@@ -11,9 +11,9 @@ export default {
         
 "primary": "#01075E",
         
-"secondary": "#DFE2EC",
+"secondary": "#F2F6FC",
         
-"accent": "#E9ECF6",
+"accent": "#DFE2EC",
         
 // "button": "",
         
