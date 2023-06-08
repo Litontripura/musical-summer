@@ -1,6 +1,12 @@
+import { useContext } from "react";
+import { AuthContext } from "../../Providers/AuthProviders";
+import Button from "../../Shared/Button";
+import toast, { Toaster } from 'react-hot-toast';
 
 
 const Registration = () => {
+    const notify = () => toast('user created successfully');
+    const {createUser}=useContext(AuthContext)
         const handleSubmit =(event)=>{
             event.preventDefault()
             const form = event.target;
@@ -8,22 +14,53 @@ const Registration = () => {
             const email = form.email.value;
             const password = form.password.value;
             const confirmPass = form.confirmPass.value;
-            console.log(name, email, password, confirmPass);
+            const photo = form.photo.value;
+            console.log(name, email, password, confirmPass,photo);
+            const userInfo = {
+                name: name,
+                email: email,
+                photo:photo,
+                role: "student"
+            }
+            createUser(email,password)
+            .then(result=>{
+                fetch('http://localhost:5000/users',{
+                   method:"POST",
+                   headers:{
+                    "content-type":"application/json"
+                   },
+                   body: JSON.stringify(userInfo)
+                })
+                .then(res=>res.json())
+                .then(data=>{
+                    if(data.insertedId){
+                        notify()
+                    }
+                    console.log(data);
+                    form.reset()
+                })
+                console.log(result);
+            })
+            .catch(err=>{
+                console.log(err);
+            })
         }
+
     return (
-        <div className="hero min-h-screen bg-base-200">
-  <div className="hero-content flex-col lg:flex-row-reverse">
+        <div className="hero min-h-screen bg-secondary">
+            
+  <div className="hero-content bg-white rounded-2xl">
     <div className="text-center lg:text-left">
-      <h1 className="text-5xl font-bold">Create account to Creative Summer</h1>
+      <h1 className="text-4xl font-bold text-primary">Create account to Creative Summer</h1>
       
     </div>
-    <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
-      <form onSubmit={handleSubmit} className="card-body">
+    <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl  bg-primary">
+      <form onSubmit={handleSubmit} className="card-body text-white">
         <div className="form-control">
           <label className="label">
-            <span className="label-text">Name</span>
+            <span className="label-text text-white">Name</span>
           </label>
-          <input name="name" type="text" placeholder="Enter your Name" className="input input-bordered" />
+          <input name="name" type="text" placeholder="Enter your Name" className="input input-bordered text-white" />
         </div>
         <div className="form-control">
           <label className="label">
@@ -45,8 +82,20 @@ const Registration = () => {
           <input name="confirmPass" type="password" placeholder="Enter your confirm password" className="input input-bordered" />
         
         </div>
+        <div className="form-control">
+          <label className="label">
+            <span className="label-text">photo url</span>
+          </label>
+          <input name="photo" type="password" placeholder="Enter your confirm photo url" className="input input-bordered" />
+        
+        </div>
         <div className="form-control mt-6">
-          <input type="submit" value="Register" />
+        <Toaster></Toaster>
+         <Button> <input type="submit" value="Register" /></Button>
+        </div>
+
+        <div className="form-control mt-6">
+          <Button>Hi</Button>
         </div>
       </form>
     </div>

@@ -2,6 +2,7 @@ import { useState } from "react";
 import Logo from "../Components/Logo";
 import { Link, NavLink } from "react-router-dom";
 import { AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
+import Container from "./Container";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -31,7 +32,8 @@ const Navbar = () => {
   );
 
   return (
-    <nav className="bg-primary">
+    <Container>
+        <nav className="bg-primary">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center">
@@ -74,6 +76,7 @@ const Navbar = () => {
         <ul className="px-2 pt-2 pb-3 space-y-1 sm:px-3">{navOptions}</ul>
       </div>
     </nav>
+    </Container>
   );
 };
 

@@ -11,11 +11,11 @@ export default {
         
 "primary": "#01075E",
         
-"secondary": "#011627",
+"secondary": "#DFE2EC",
         
-"accent": "#011627",
+"accent": "#E9ECF6",
         
-// "neutral": "",
+// "button": "",
         
 // "base-100": "",
         

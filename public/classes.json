@@ -1,0 +1,92 @@
+[
+    {
+      "id": "1",
+      "name": "Piano Basics",
+      "instructor": "John Doe",
+      "description": "Learn the fundamentals of playing the piano.",
+      "image": "piano.jpg",
+      "availableSeats": 10,
+      "price": 50
+    },
+    {
+      "id": "2",
+      "name": "Guitar Mastery",
+      "instructor": "Jane Smith",
+      "description": "Master the art of playing the guitar.",
+      "image": "guitar.jpg",
+      "availableSeats": 5,
+      "price": 60
+    },
+    {
+      "id": "3",
+      "name": "Drumming Techniques",
+      "instructor": "Mike Johnson",
+      "description": "Learn various drumming techniques and styles.",
+      "image": "drums.jpg",
+      "availableSeats": 8,
+      "price": 55
+    },
+    {
+      "id": "4",
+      "name": "Violin for Beginners",
+      "instructor": "Sarah Thompson",
+      "description": "Start your journey in playing the violin.",
+      "image": "violin.jpg",
+      "availableSeats": 12,
+      "price": 45
+    },
+    {
+      "id": "5",
+      "name": "Bass Guitar Workshop",
+      "instructor": "David Wilson",
+      "description": "Enhance your skills in playing the bass guitar.",
+      "image": "bass_guitar.jpg",
+      "availableSeats": 6,
+      "price": 65
+    },
+    {
+      "id": "6",
+      "name": "Saxophone Essentials",
+      "instructor": "Emily Davis",
+      "description": "Learn the essentials of playing the saxophone.",
+      "image": "saxophone.jpg",
+      "availableSeats": 10,
+      "price": 50
+    },
+    {
+        "id": "7",
+        "name": "Trumpet Techniques",
+        "instructor": "Michael Adams",
+        "description": "Explore various techniques for playing the trumpet.",
+        "image": "trumpet.jpg",
+        "availableSeats": 7,
+        "price": 55
+      },
+      {
+        "id": "8",
+        "name": "Flute Mastery",
+        "instructor": "Olivia Wilson",
+        "description": "Master the art of playing the flute with precision.",
+        "image": "flute.jpg",
+        "availableSeats": 10,
+        "price": 50
+      },
+      {
+        "id": "9",
+        "name": "Cello Fundamentals",
+        "instructor": "Daniel Brown",
+        "description": "Learn the basics of playing the cello with proper technique.",
+        "image": "cello.jpg",
+        "availableSeats": 5,
+        "price": 60
+      },
+      {
+        "id": "10",
+        "name": "Ukulele Workshop",
+        "instructor": "Sophia Miller",
+        "description": "Join this workshop to become skilled in playing the ukulele.",
+        "image": "ukulele.jpg",
+        "availableSeats": 8,
+        "price": 45
+      }
+  ]
