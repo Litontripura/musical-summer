@@ -7,34 +7,39 @@ import { AuthContext } from "../Providers/AuthProviders";
 
 
 const Dashboard = () => {
+  // TODO
+  const isAdmin = true
+  const isInstructor = false
   const {user}= useContext(AuthContext)
   const navOptions = (
     <>
-      <li className="py-2 md:py-0 lg:py-0">
+    {isAdmin ?<> <li className="py-2 md:py-0 lg:py-0">
         <ActiveLink exact to="adminHome" activeClassName="text-white">
           Admin Home
         </ActiveLink>
-      </li>
-      <li className="py-2 md:py-0 lg:py-0">
-        <ActiveLink to="instructorsHome" activeClassName="text-white">
-          Instructors Home
+
+      </li>  <li className="py-2 md:py-0 lg:py-0">
+        <ActiveLink to="allusers" activeClassName="text-white">
+          Manage users
         </ActiveLink>
-      </li>
-      <li className="py-2 md:py-0 lg:py-0">
+      </li></>:<li className="py-2 md:py-0 lg:py-0">
         <ActiveLink to="students" activeClassName="text-white">
           Students Home
         </ActiveLink>
       </li>
-
-      <li className="py-2 md:py-0 lg:py-0">
-        <ActiveLink to="allusers" activeClassName="text-white">
-          all users
+}
+   {
+    isInstructor ? <li className="py-2 md:py-0 lg:py-0">
+    <ActiveLink to="instructorsHome" activeClassName="text-white">
+      Instructors Home
+    </ActiveLink>
+  </li> : <li className="py-2 md:py-0 lg:py-0">
+        <ActiveLink to="students" activeClassName="text-white">
+          Students Home
         </ActiveLink>
-      </li>
-   
-   
-    
-      
+        </li>
+   }
+        
     </>
   );
     return (

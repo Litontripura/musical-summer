@@ -6,9 +6,11 @@ import router from "./Routes/Routes.jsx";
 import AuthProviders from "./Providers/AuthProviders.jsx";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <AuthProviders>
+ <div className="bg-accent">
+   <AuthProviders>
     <React.StrictMode>
       <RouterProvider router={router} />
     </React.StrictMode>
   </AuthProviders>
+ </div>
 );
