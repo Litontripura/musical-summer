@@ -4,6 +4,7 @@ import "./Dashboard.css";
 import ActiveLink from "../Routes/ActiveLink";
 import { useContext } from "react";
 import { AuthContext } from "../Providers/AuthProviders";
+import Container from "../Shared/Container";
 
 const Dashboard = () => {
   // TODO
@@ -15,7 +16,7 @@ const Dashboard = () => {
     <>
       {isAdmin && (
         <>
-          {" "}
+         
           <li className="py-2 md:py-0 lg:py-0">
             <ActiveLink exact to="adminHome" activeClassName="text-white">
               Admin Home
@@ -25,6 +26,7 @@ const Dashboard = () => {
             <ActiveLink to="allusers" activeClassName="text-white">
               Manage users
             </ActiveLink>
+           
           </li>
         </>
       )}
@@ -33,6 +35,9 @@ const Dashboard = () => {
           <ActiveLink to="instructorsHome" activeClassName="text-white">
             Instructors Home
           </ActiveLink>
+          <ActiveLink to="addclass" activeClassName="text-white">
+              add classe
+            </ActiveLink>
         </li>
       )}
       {isStudent && (
@@ -51,7 +56,8 @@ const Dashboard = () => {
     </>
   );
   return (
-    <div className="p-5 bg-accent">
+   <Container>
+     <div className="p-5 bg-accent">
       <div className="drawer lg:drawer-open bg-primary p-2 radius1">
         <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
         <div className="drawer-content flex flex-col items-center justify-center bg-secondary radius2">
@@ -71,6 +77,7 @@ const Dashboard = () => {
         </div>
       </div>
     </div>
+   </Container>
   );
 };
 

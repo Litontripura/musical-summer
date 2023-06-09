@@ -11,7 +11,7 @@ const Banner = () => {
    to: { x: 100 },
  })
   useEffect(() => {
-    fetch("banner.json")
+    fetch("https://summer-school-server-inky.vercel.app/banner")
       .then((response) => response.json())
       .then((data) => setBannerData(data))
       .catch((error) => console.log(error));

@@ -41,8 +41,8 @@ const SignUp = () => {
 
         updateUserProfile(data.name, data.photoURL)
           .then(() => {
-            const saveUser = { name: data.name, email: data.email, role:"student" };
-            axios.post("http://localhost:5000/users", saveUser, {
+            const saveUser = { name: data.name, email: data.email, role:"student",photo:data.photoURL };
+            axios.post("https://summer-school-server-inky.vercel.app/users", saveUser, {
                 headers: {
                   "Content-Type": "application/json",
                 },

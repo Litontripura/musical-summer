@@ -6,31 +6,28 @@ import toast, { Toaster } from 'react-hot-toast';
 const AllUsers = () => {
   const notify = () => toast('role updated successfully');
   const { data: users = [], refetch } = useQuery(["users"], async () => {
-    const res = await fetch("http://localhost:5000/users");
+    const res = await fetch("https://summer-school-server-inky.vercel.app/users");
     return res.json();
   });
   console.log(users);
+
   const handleMakeAdmin = (id) => {
-    fetch(`http://localhost:5000/users/admin/${id}`, {
+    fetch(`https://summer-school-server-inky.vercel.app/users/admin/${id}`, {
       method: "PATCH"
     })
       .then(res => res.json())
       .then(data => {
-        if (data.modifienCount) {
-          notify()
-        }
+        refetch()
       })
 
   };
   const handleMakeInstructor = (id) => {
-    fetch(`http://localhost:5000/users/instructor/${id}`, {
+    fetch(`https://summer-school-server-inky.vercel.app/users/instructor/${id}`, {
       method: "PATCH"
     })
       .then(res => res.json())
       .then(data => {
-        if (data.modifienCount) {
-          notify()
-        }
+       refetch()
       })
   };
 

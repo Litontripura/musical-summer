@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import ClassCard from './ClassCard';
+import Container from '../../Shared/Container';
 
 const Classes = () => {
     const [classes, setClasses]=useState([])
     useEffect(()=>{
-        fetch('http://localhost:5000/classes')
+        fetch('https://summer-school-server-inky.vercel.app/classes')
         .then(res=>res.json())
         .then(data=>{
             console.log(data);
@@ -12,9 +13,9 @@ const Classes = () => {
         })
     },[])
     return (
-        <div className='mx-auto'>
-            <h1>{classes.length}</h1>
-          <div className='grid grid-cols-2 justify-center items-center mx-auto'>
+       <Container>
+         <div className='mx-auto bg-accent'>
+          <div className='md:grid grid-cols-3 justify-center items-center mx-auto gap-5'>
           {
             classes.map(item=>
                 <ClassCard
@@ -25,6 +26,7 @@ const Classes = () => {
            }
           </div>
         </div>
+       </Container>
     );
 };
 
