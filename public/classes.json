@@ -4,7 +4,7 @@
       "name": "Piano Basics",
       "instructor": "John Doe",
       "description": "Learn the fundamentals of playing the piano.",
-      "image": "piano.jpg",
+      "image": "https://images.unsplash.com/photo-1479118013749-9f79d55a28d0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fHBpYW5vfGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60",
       "availableSeats": 10,
       "price": 50
     },
@@ -13,7 +13,7 @@
       "name": "Guitar Mastery",
       "instructor": "Jane Smith",
       "description": "Master the art of playing the guitar.",
-      "image": "guitar.jpg",
+      "image": "https://images.unsplash.com/photo-1525201548942-d8732f6617a0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8Z3VpdGFyfGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60",
       "availableSeats": 5,
       "price": 60
     },
@@ -22,7 +22,7 @@
       "name": "Drumming Techniques",
       "instructor": "Mike Johnson",
       "description": "Learn various drumming techniques and styles.",
-      "image": "drums.jpg",
+      "image": "https://images.unsplash.com/photo-1602001502712-a60898252e12?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8RHJ1bW1pbmd8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60",
       "availableSeats": 8,
       "price": 55
     },
@@ -31,7 +31,7 @@
       "name": "Violin for Beginners",
       "instructor": "Sarah Thompson",
       "description": "Start your journey in playing the violin.",
-      "image": "violin.jpg",
+      "image": "https://images.unsplash.com/photo-1612225330812-01a9c6b355ec?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8VmlvbGlufGVufDB8fDB8fHww&auto=format&fit=crop&w=700&q=60",
       "availableSeats": 12,
       "price": 45
     },
@@ -40,7 +40,7 @@
       "name": "Bass Guitar Workshop",
       "instructor": "David Wilson",
       "description": "Enhance your skills in playing the bass guitar.",
-      "image": "bass_guitar.jpg",
+      "image": "https://images.unsplash.com/photo-1619558041249-0523903712e1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8QmFzcyUyMEd1aXRhcnxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=700&q=60",
       "availableSeats": 6,
       "price": 65
     },
@@ -49,7 +49,7 @@
       "name": "Saxophone Essentials",
       "instructor": "Emily Davis",
       "description": "Learn the essentials of playing the saxophone.",
-      "image": "saxophone.jpg",
+      "image": "https://images.unsplash.com/photo-1509026485-58a5043c2c46?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8U2F4b3Bob25lJTIwRXNzZW50aWFsc3xlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60",
       "availableSeats": 10,
       "price": 50
     },
@@ -58,7 +58,7 @@
         "name": "Trumpet Techniques",
         "instructor": "Michael Adams",
         "description": "Explore various techniques for playing the trumpet.",
-        "image": "trumpet.jpg",
+        "image": "https://images.unsplash.com/photo-1520614233149-f698fd8379e4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8VHJ1bXBldCUyMFRlY2huaXF1ZXN8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60",
         "availableSeats": 7,
         "price": 55
       },
@@ -67,7 +67,7 @@
         "name": "Flute Mastery",
         "instructor": "Olivia Wilson",
         "description": "Master the art of playing the flute with precision.",
-        "image": "flute.jpg",
+        "image": "https://images.unsplash.com/photo-1521135370171-f213cd28a4fe?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8Rmx1dGUlMjBNYXN0ZXJ5fGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60",
         "availableSeats": 10,
         "price": 50
       },
@@ -76,7 +76,7 @@
         "name": "Cello Fundamentals",
         "instructor": "Daniel Brown",
         "description": "Learn the basics of playing the cello with proper technique.",
-        "image": "cello.jpg",
+        "image": "https://images.unsplash.com/photo-1531660963020-52ba84d92593?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Q2VsbG8lMjBGdW5kYW1lbnRhbHN8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60",
         "availableSeats": 5,
         "price": 60
       },
@@ -85,7 +85,7 @@
         "name": "Ukulele Workshop",
         "instructor": "Sophia Miller",
         "description": "Join this workshop to become skilled in playing the ukulele.",
-        "image": "ukulele.jpg",
+        "image": "https://images.unsplash.com/photo-1518190171695-bbbb69c4a901?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8VWt1bGVsZXxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60",
         "availableSeats": 8,
         "price": 45
       }
