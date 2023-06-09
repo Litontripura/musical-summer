@@ -1,129 +1,189 @@
-import { useContext } from "react";
+import { useContext, useRef } from "react";
+import { useForm } from "react-hook-form";
+import { Link, useNavigate } from "react-router-dom";
+import toast, { Toaster } from 'react-hot-toast';
 import { AuthContext } from "../../Providers/AuthProviders";
-import Button from "../../Shared/Button";
-import toast, { Toaster } from "react-hot-toast";
-import Container from "../../Shared/Container";
+import SocialLogin from "../../SocialLogin/SocialLogin";
+import axios from "axios";
 
-const Registration = () => {
-  const notify = () => toast("user created successfully");
-  const { createUser } = useContext(AuthContext);
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const form = event.target;
-    const name = form.name.value;
-    const email = form.email.value;
-    const password = form.password.value;
-    const confirmPass = form.confirmPass.value;
-    const photo = form.photo.value;
-    console.log(name, email, password, confirmPass, photo);
-    const userInfo = {
-      name: name,
-      email: email,
-      photo: photo,
-      role: "student",
-    };
-    createUser(email, password)
-      .then((result) => {
-        fetch("http://localhost:5000/users", {
-          method: "POST",
-          headers: {
-            "content-type": "application/json",
-          },
-          body: JSON.stringify(userInfo),
-        })
-          .then((res) => res.json())
-          .then((data) => {
-            if (data.insertedId) {
-              notify();
-            }
-            console.log(data);
-            form.reset();
-          });
-        console.log(result);
-      })
-      .catch((err) => {
-        console.log(err);
+const SignUp = () => {
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+    watch,
+  } = useForm();
+  const { createUser, updateUserProfile } = useContext(AuthContext);
+  const navigate = useNavigate();
+
+  const password = useRef({});
+  password.current = watch("password", "");
+
+  const onSubmit = (data) => {
+    if (data.password !== data.confirmPassword) {
+      toast.error("Passwords do not match.", {
+        position: "top-right",
+        duration: 1500,
+        style: {
+          backgroundColor: "gray",
+          color: "#fff",
+        },
       });
+      return;
+    }
+
+    createUser(data.email, data.password)
+      .then((result) => {
+        const loggedUser = result.user;
+        console.log(loggedUser);
+
+        updateUserProfile(data.name, data.photoURL)
+          .then(() => {
+            const saveUser = { name: data.name, email: data.email, role:"student" };
+            axios.post("http://localhost:5000/users", saveUser, {
+                headers: {
+                  "Content-Type": "application/json",
+                },
+              })
+              .then((response) => {
+                if (response.data.insertedId) {
+                  reset();
+                  toast.success("User created successfully.", {
+                    position: "top-right",
+                    duration: 1500,
+                    style: {
+                      backgroundColor: "gray",
+                      color: "#fff",
+                    },
+                  });
+                  navigate("/");
+                }
+              })
+              .catch((error) => console.log(error));
+          })
+          .catch((error) => console.log(error));
+      })
+      .catch((error) => console.log(error));
   };
 
   return (
-    <Container>
-      <div className="min-h-screen bg-secondary w-full">
-      <div className="hero-content bg-secondary rounded-2xl">
-        <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl  bg-primary">
-          <form onSubmit={handleSubmit} className="card-body text-white">
-            <div className="form-control">
-              <label className="label">
-                <span className="label-text text-white">Name</span>
-              </label>
-              <input
-                name="name"
-                type="text"
-                placeholder="Enter your Name"
-                className="input input-bordered text-white"
-              />
-            </div>
-            <div className="form-control">
-              <label className="label">
-                <span className="label-text">Email</span>
-              </label>
-              <input
-                name="email"
-                type="email"
-                placeholder="Enter your email"
-                className="input input-bordered"
-              />
-            </div>
-            <div className="form-control">
-              <label className="label">
-                <span className="label-text">Password</span>
-              </label>
-              <input
-                name="password"
-                type="password"
-                placeholder="password"
-                className="input input-bordered"
-              />
-            </div>
-            <div className="form-control">
-              <label className="label">
-                <span className="label-text">Confirm Password</span>
-              </label>
-              <input
-                name="confirmPass"
-                type="password"
-                placeholder="Enter your confirm password"
-                className="input input-bordered"
-              />
-            </div>
-            <div className="form-control">
-              <label className="label">
-                <span className="label-text">photo url</span>
-              </label>
-              <input
-                name="photo"
-                type="password"
-                placeholder="Enter your confirm photo url"
-                className="input input-bordered"
-              />
-            </div>
-            <div className="form-control mt-6">
-              <Toaster></Toaster>
-              <Button>
-              
-                <input className="cursor-pointer" type="submit" value="Register" />
-              </Button>
-            </div>
-
-            <div className="form-control mt-6">
-              <Button>Hi</Button>
-            </div>
-          </form>
+    <>
+      <div className=" min-h-screen">
+        <div className="md:w-1/3 mx-auto">
+          <div className="rounded shadow-2xl bg-secondary">
+            <form onSubmit={handleSubmit(onSubmit)} className="card-body">
+              <h1 className="text-3xl font-bold text-primary">Sign up now!</h1>
+              <div className="form-control">
+                <label className="label">
+                  <span className="label-text text-primary">Name</span>
+                </label>
+                <input
+                  type="text"
+                  {...register("name", { required: true })}
+                  name="name"
+                  placeholder="Name"
+                  className="input input-bordered text-primary"
+                />
+                {errors.name && (
+                  <span className="text-orange-600">Name is required</span>
+                )}
+              </div>
+              <div className="form-control">
+                <label className="label">
+                  <span className="label-text text-primary">Photo URL</span>
+                </label>
+                <input
+                  type="text"
+                  {...register("photoURL", { required: true })}
+                  placeholder="Photo URL"
+                  className="input input-bordered text-primary"
+                />
+                {errors.photoURL && (
+                  <span className="text-orange-600">Photo URL is required</span>
+                )}
+              </div>
+              <div className="form-control">
+                <label className="label">
+                  <span className="label-text text-primary">Email</span>
+                </label>
+                <input
+                  type="email"
+                  {...register("email", { required: true })}
+                  name="email"
+                  placeholder="email"
+                  className="input input-bordered text-primary"
+                />
+                {errors.email && (
+                  <span className="text-orange-700">Email is required</span>
+                )}
+              </div>
+              <div className="form-control">
+                <label className="label">
+                  <span className="label-text text-primary">Password</span>
+                </label>
+                <input
+                  type="password"
+                  {...register("password", {
+                    required: true,
+                    minLength: 6,
+                    maxLength: 20,
+                    pattern: /(?=.*[A-Z])(?=.*[!@#$&*])/,
+                  })}
+                  placeholder="password"
+                  className="input input-bordered text-primary"
+                />
+                {errors.password?.type === "required" && (
+                  <p className="text-orange-700">Password is required</p>
+                )}
+                {errors.password?.type === "minLength" && (
+                  <p className="text-orange-700">Password must be 6 characters</p>
+                )}
+                {errors.password?.type === "maxLength" && (
+                  <p className="text-orange-700">
+                    Password must be less than 20 characters
+                  </p>
+                )}
+                {errors.password?.type === "pattern" && (
+                  <p className="text-orange-700">
+                    Password must have one Uppercase and one special character
+                  </p>
+                )}
+              </div>
+              <div className="form-control">
+                <label className="label">
+                  <span className="label-text text-primary">Confirm Password</span>
+                </label>
+                <input
+                  type="password"
+                  {...register("confirmPassword", {
+                    required: true,
+                    validate: (value) => value === password.current || "Passwords do not match",
+                  })}
+                  placeholder="confirm password"
+                  className="input input-bordered text-primary"
+                />
+                {errors.confirmPassword && (
+                  <p className="text-orange-700">{errors.confirmPassword.message}</p>
+                )}
+              </div>
+              <div className="form-control mt-6 w-full">
+                <input className="btn btn-primary" type="submit" value="Sign Up" />
+              </div>
+            </form>
+            <p className="text-center">
+              <small className="text-primary">
+                Already have an account please <Link to="/login">Login</Link>
+              </small>
+            </p>
+           <div className="w-full">
+           <SocialLogin />
+           </div>
+          </div>
         </div>
       </div>
-    </div>
-    </Container>
+    </>
   );
 };
 
-export default Registration;
+export default SignUp;
