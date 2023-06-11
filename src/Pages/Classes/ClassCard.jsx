@@ -15,7 +15,7 @@ const ClassCard = ({ item }) => {
         <p className='text-white'>price ${price}</p>
         <p className='text-white'>Available Seats {availableSeats}</p>
         <div className="card-actions flex justify-center items-center">
-          <button className="btn btn-accent text-primary absolute bottom-2 right-2 mx-auto">Enroll now</button>
+          <button className="btn btn-accent text-primary absolute bottom-2 right-2 mx-auto">select</button>
         </div>
       </div>
     </div>

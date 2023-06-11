@@ -1,28 +1,27 @@
-import { useContext, useState } from "react";
-import Logo from "../Components/Logo";
-import { Link} from "react-router-dom";
+import  { useContext, useState } from "react";
+import { Link } from "react-router-dom";
 import { AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
 import Container from "./Container";
 import { AuthContext } from "../Providers/AuthProviders";
 import ActiveLink from "../Routes/ActiveLink";
+import Logo from "../Components/Logo";
 
 const Navbar = () => {
-  const {user,logOut}= useContext(AuthContext)
+  const { user, logOut } = useContext(AuthContext);
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleNavbar = () => {
     setIsOpen(!isOpen);
   };
-  const handleLogout = ()=>{
-    logOut()
-    .then((result)=>{
-      console.log(result);
 
-    })
-    .then((error)=>{
-      console.log(error);
-    })
-  }
+  const handleLogout = async () => {
+    try {
+      await logOut();
+      console.log("Logout successful");
+    } catch (error) {
+      console.log("Logout error:", error);
+    }
+  };
 
   const navOptions = (
     <>
@@ -41,25 +40,26 @@ const Navbar = () => {
           Classes
         </ActiveLink>
       </li>
-   
-      <li className="py-2 md:py-0 lg:py-0">
-        <ActiveLink to="/dashboard" activeClassName="text-white">
-          Dashboard
-        </ActiveLink>
-      </li>
-     {
-      user ? <li>
-      <button onClick={handleLogout}>Logout</button>
-    </li> :  <li className="py-2 md:py-0 lg:py-0">
-      <ActiveLink to="/login" activeClassName="text-white">
-        Login
-      </ActiveLink>
-    </li>
-     }
-      <li className="py-2 md:py-0 lg:py-0">user</li>
+      {user && (
+        <li className="py-2 md:py-0 lg:py-0">
+          <ActiveLink to="/dashboard" activeClassName="text-white">
+            Dashboard
+          </ActiveLink>
+        </li>
+      )}
+      {user ? (
+        <li>
+          <button onClick={handleLogout}>Logout</button>
+        </li>
+      ) : (
+        <li className="py-2 md:py-0 lg:py-0">
+          <ActiveLink to="/login" activeClassName="text-white">
+            Login
+          </ActiveLink>
+        </li>
+      )}
     </>
   );
-
   return (
     <Container>
       <nav className="bg-primary fixed top-0 left-0 right-0 z-20">
@@ -68,7 +68,7 @@ const Navbar = () => {
             <div className="flex items-center">
               <Link to="/">
                 <div className="flex-shrink-0">
-                  <Logo></Logo>
+                  <Logo />
                 </div>
               </Link>
             </div>
@@ -85,7 +85,7 @@ const Navbar = () => {
                 type="button"
                 className="inline-flex items-center justify-center p-2 rounded-md text-white focus:outline-none focus:ring-white"
                 aria-controls="mobile-menu"
-                aria-expanded="false"
+                aria-expanded={isOpen}
               >
                 {isOpen ? (
                   <AiOutlineClose className="block h-6 w-6" />
@@ -94,13 +94,20 @@ const Navbar = () => {
                 )}
               </button>
             </div>
+            {user && (
+              <div>
+                <img
+                  className="h-[40px] w-[40px] rounded-full ml-2"
+                  src={user.photoURL}
+                  alt=""
+                />
+              </div>
+            )}
           </div>
         </div>
 
         <div
-          className={`${
-            isOpen ? "block" : "hidden"
-          } md:hidden transition duration-500 ease-in-out`}
+          className={`${isOpen ? "block" : "hidden"} md:hidden transition duration-500 ease-in-out`}
         >
           <ul className="px-2 pt-2 pb-3 space-y-1 sm:px-3">{navOptions}</ul>
         </div>

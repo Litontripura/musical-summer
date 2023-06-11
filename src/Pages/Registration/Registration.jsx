@@ -8,6 +8,7 @@ import axios from "axios";
 import './Registration.css'
 
 const SignUp = () => {
+  const notify = () => toast.success('user created successfully');
   const {
     register,
     handleSubmit,
@@ -41,7 +42,7 @@ const SignUp = () => {
 
         updateUserProfile(data.name, data.photoURL)
           .then(() => {
-            const saveUser = { name: data.name, email: data.email, role:"student",photo:data.photoURL };
+            const saveUser = { name: data.name, email: data.email, role:"user",photo:data.photoURL };
             axios.post("https://summer-school-server-inky.vercel.app/users", saveUser, {
                 headers: {
                   "Content-Type": "application/json",
@@ -49,15 +50,9 @@ const SignUp = () => {
               })
               .then((response) => {
                 if (response.data.insertedId) {
+                  notify()
                   reset();
-                  toast.success("User created successfully.", {
-                    position: "top-right",
-                    duration: 1500,
-                    style: {
-                      backgroundColor: "gray",
-                      color: "#fff",
-                    },
-                  });
+                  
                   navigate("/");
                 }
               })
@@ -71,6 +66,7 @@ const SignUp = () => {
   return (
     <>
       <div className=" min-h-screen py-10">
+        <Toaster></Toaster>
         <div className="md:w-1/3 mx-auto">
           <div className="rounded shadow-2xl bg-secondary border2">
             <form onSubmit={handleSubmit(onSubmit)} className="card-body">
