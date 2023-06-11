@@ -15,9 +15,9 @@ export default {
         
 "accent": "#DFE2EC",
         
-// "button": "",
+"text1": "#011627",
         
-// "base-100": "",
+"text2": "#0B2942",
         
 // "info": "",
         

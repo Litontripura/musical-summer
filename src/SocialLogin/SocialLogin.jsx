@@ -16,7 +16,7 @@ const SocialLogin = () => {
         const result = await signInWithGoogle();
         const loggedInUser = result.user;
         console.log(loggedInUser);
-        const saveUser = { name: loggedInUser.displayName, email: loggedInUser.email , role:"student"};
+        const saveUser = { name: loggedInUser.displayName, email: loggedInUser.email , role:"student", photo: loggedInUser.photoURL};
         await axios.post("https://summer-school-server-inky.vercel.app/users", saveUser, {
           headers: {
             "Content-Type": "application/json",

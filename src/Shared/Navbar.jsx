@@ -1,10 +1,12 @@
-import  { useContext, useState } from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
 import Container from "./Container";
 import { AuthContext } from "../Providers/AuthProviders";
 import ActiveLink from "../Routes/ActiveLink";
 import Logo from "../Components/Logo";
+import { RxAvatar } from "react-icons/rx";
+
 
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
@@ -25,44 +27,35 @@ const Navbar = () => {
 
   const navOptions = (
     <>
-      <li className="py-2 md:py-0 lg:py-0">
-        <ActiveLink exact to="/" activeClassName="text-white">
+      <li className="py-2 md:py-0 lg:py-0 text-primary">
+        <ActiveLink exact to="/">
           Home
         </ActiveLink>
       </li>
-      <li className="py-2 md:py-0 lg:py-0">
-        <ActiveLink to="/instructors" activeClassName="text-white">
+      <li className="py-2 md:py-0 lg:py-0 text-primary">
+        <ActiveLink to="/instructors">
           Instructors
         </ActiveLink>
       </li>
-      <li className="py-2 md:py-0 lg:py-0">
-        <ActiveLink to="/classes" activeClassName="text-white">
+      <li className="py-2 md:py-0 lg:py-0 text-primary">
+        <ActiveLink to="/classes">
           Classes
         </ActiveLink>
       </li>
       {user && (
-        <li className="py-2 md:py-0 lg:py-0">
-          <ActiveLink to="/dashboard" activeClassName="text-white">
+        <li className="py-2 md:py-0 lg:py-0 text-primary">
+          <ActiveLink to="/dashboard">
             Dashboard
           </ActiveLink>
         </li>
       )}
-      {user ? (
-        <li>
-          <button onClick={handleLogout}>Logout</button>
-        </li>
-      ) : (
-        <li className="py-2 md:py-0 lg:py-0">
-          <ActiveLink to="/login" activeClassName="text-white">
-            Login
-          </ActiveLink>
-        </li>
-      )}
+      
     </>
   );
+
   return (
     <Container>
-      <nav className="bg-primary fixed top-0 left-0 right-0 z-20">
+      <nav className="bg-accent fixed top-0 left-0 right-0 z-20">
         <div className="mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             <div className="flex items-center">
@@ -74,7 +67,7 @@ const Navbar = () => {
             </div>
             <div className="flex-grow flex items-center justify-center">
               <div className="hidden md:block">
-                <ul className="ml-4 flex items-baseline space-x-4">
+                <ul className="ml-4 block md:flex items-center space-x-4 navbar">
                   {navOptions}
                 </ul>
               </div>
@@ -94,22 +87,30 @@ const Navbar = () => {
                 )}
               </button>
             </div>
-            {user && (
-              <div>
+            {user ?  (
+              <div className="md:flex  gap-2">
+                 
                 <img
                   className="h-[40px] w-[40px] rounded-full ml-2"
                   src={user.photoURL}
                   alt=""
                 />
+                <button className="text-primary" onClick={handleLogout}>Logout</button>
+               
               </div>
-            )}
+            ):(<span className="flex items-center gap-2 py-2 md:py-0 lg:py-0 text-primary">
+              <RxAvatar className="text-3xl"></RxAvatar>
+            <ActiveLink to="/login">
+              Login
+            </ActiveLink>
+               </span>)}
           </div>
         </div>
 
-        <div
-          className={`${isOpen ? "block" : "hidden"} md:hidden transition duration-500 ease-in-out`}
-        >
-          <ul className="px-2 pt-2 pb-3 space-y-1 sm:px-3">{navOptions}</ul>
+        <div className={`${isOpen ? "block" : "hidden"} md:hidden transition duration-500 ease-in-out`}>
+          <ul className="px-2 flex flex-col pt-2 pb-3 space-y-1 sm:px-3 navbar justify-start">
+            {navOptions}
+          </ul>
         </div>
       </nav>
     </Container>

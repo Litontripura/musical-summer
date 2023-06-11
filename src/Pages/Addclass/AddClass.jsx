@@ -21,6 +21,8 @@ const AddClass = () => {
     const instructor = form.instructor.value;
     const availableSeats = form.availableSeats.value;
     const price = form.price.value;
+    const enroled = form.enroled.value;
+
     const classInfo = {
       img: img,
       classname: classname,
@@ -28,6 +30,7 @@ const AddClass = () => {
       availableSeats: availableSeats,
       price: price,
       status: 'pending',
+      enroled: enroled
     };
 
     addClassMutation.mutate(classInfo);
@@ -84,6 +87,19 @@ const AddClass = () => {
               className="shadow appearance-none border rounded w-full py-2 px-3 text-primary leading-tight focus:outline-none focus:shadow-outline"
               id="availableSeats"
               name="availableSeats"
+              type="number"
+              placeholder="Enter the number of available seats"
+              required
+            />
+          </div>
+          <div className="mb-4">
+            <label className="block text-primary font-bold mb-2" htmlFor="availableSeats">
+             enrolled Student
+            </label>
+            <input
+              className="shadow appearance-none border rounded w-full py-2 px-3 text-primary leading-tight focus:outline-none focus:shadow-outline"
+              id="availableSeats"
+              name="enroled"
               type="number"
               placeholder="Enter the number of available seats"
               required
