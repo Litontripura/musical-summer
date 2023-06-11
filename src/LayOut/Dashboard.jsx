@@ -28,6 +28,12 @@ const Dashboard = () => {
             </ActiveLink>
            
           </li>
+          <li className="py-2 md:py-0 lg:py-0">
+            <ActiveLink to="allclasses" activeClassName="text-white">
+              Manage classes
+            </ActiveLink>
+           
+          </li>
         </>
       )}
       {isInstructor && (

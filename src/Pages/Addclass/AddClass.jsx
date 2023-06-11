@@ -1,18 +1,28 @@
 import { useMutation } from "@tanstack/react-query";
+import { useContext } from "react";
+import { AuthContext } from "../../Providers/AuthProviders";
+import toast, { Toaster } from 'react-hot-toast';
+
+
 
 
 const AddClass = () => {
+  const notify = () => toast.success('Class added successfully');
+  const { user } = useContext(AuthContext);
+
   
-    const addClassMutation = useMutation((classInfo) =>
+  const addClassMutation = useMutation((classInfo) =>
     fetch('https://summer-school-server-inky.vercel.app/classesadd', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify(classInfo),
-    }).then((res) => res.json())
+    })
+      .then((res) => res.json())
+      
   );
-
+  
   const handleSubmit = (event) => {
     event.preventDefault();
     const form = event.target;
@@ -22,20 +32,20 @@ const AddClass = () => {
     const availableSeats = form.availableSeats.value;
     const price = form.price.value;
     const enroled = form.enroled.value;
-
+  
     const classInfo = {
       img: img,
       classname: classname,
-      instructor: instructor,
+      displayName: instructor,
       availableSeats: availableSeats,
       price: price,
       status: 'pending',
-      enroled: enroled
+      enroled: enroled,
+      email: user.email,
     };
-
+  
     addClassMutation.mutate(classInfo);
   };
-
     return (
         <div className="w-full md:w-1/2 mx-auto border-primary">
         <h1 className="text-2xl font-bold text-center my-8">Add New Class</h1>
@@ -75,6 +85,23 @@ const AddClass = () => {
               id="instructor"
               name="instructor"
               type="text"
+              defaultValue={user?.displayName}
+              readOnly
+              placeholder="Enter the instructor's name"
+              required
+            />
+          </div>
+          <div className="mb-4">
+            <label className="block text-primary font-bold mb-2" htmlFor="instructor">
+              email 
+            </label>
+            <input
+              className="shadow appearance-none border rounded w-full py-2 px-3 text-primary leading-tight focus:outline-none focus:shadow-outline"
+              id="instructor"
+              name="email"
+              type="text"
+              defaultValue={user?.email}
+              readOnly
               placeholder="Enter the instructor's name"
               required
             />

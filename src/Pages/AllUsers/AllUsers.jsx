@@ -7,7 +7,7 @@ import toast, { Toaster } from 'react-hot-toast';
 const AllUsers = () => {
   const admin = () => toast.success('Add admin successfully');
   const instructor = () => toast.success('Add instructor successfully');
-  const userDelet = () => toast.success('user deleted successfully');
+  const userDelete = () => toast.success('User deleted successfully');
   const { data: users = [], isLoading, refetch } = useQuery(["users"], async () => {
     const res = await fetch("https://summer-school-server-inky.vercel.app/users");
     return res.json();
@@ -20,9 +20,8 @@ const AllUsers = () => {
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
-        admin()
+        admin();
         refetch();
-     
       });
   };
   
@@ -32,22 +31,21 @@ const AllUsers = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        
-        instructor()
+        instructor();
         refetch();
       });
   };
 
-  const handleDeletUser =(id)=>{
-    fetch(`https://summer-school-server-inky.vercel.app/deletuser/${id}`,{
-      method:"DELETE"
+  const handleDeleteUser = (id) => {
+    fetch(`https://summer-school-server-inky.vercel.app/deletuser/${id}`, {
+      method: "DELETE"
     })
-    .then(res=>res.json())
-    .then(data=>{
-      userDelet()
-      refetch()
-    })
-  }
+      .then(res => res.json())
+      .then(data => {
+        userDelete();
+        refetch();
+      });
+  };
   
   return (
     <div className="overflow-x-auto text-primary">
@@ -57,7 +55,6 @@ const AllUsers = () => {
         <Loading />
       ) : (
         <table className="table radius text-center rounded-lg">
-         
           <Toaster />
           <thead className="text-primary">
             <tr>
@@ -72,7 +69,7 @@ const AllUsers = () => {
           <tbody>
             {users.map((user, index) => (
               <tr key={user._id}>
-                <th>{index + 1}</th>
+                <td>{index + 1}</td>
                 <td>
                   <div className="flex items-center space-x-3">
                     <div>
@@ -102,11 +99,11 @@ const AllUsers = () => {
                     </div>
                   )}
                 </td>
-                <th>
-                  <button onClick={()=>handleDeletUser(user._id)} className="btn-accent p-1 rounded-full text-2xl text-orange-700">
+                <td>
+                  <button onClick={() => handleDeleteUser(user._id)} className="btn-accent p-1 rounded-full text-2xl text-orange-700">
                     <AiTwotoneDelete></AiTwotoneDelete>
                   </button>
-                </th>
+                </td>
               </tr>
             ))}
           </tbody>

@@ -12,6 +12,7 @@ import InstructorHome from "../Pages/InstructorHome/InstructorHome";
 import AllUsers from "../Pages/AllUsers/AllUsers";
 import Error from "../Pages/Error/Error";
 import AddClass from "../Pages/Addclass/AddClass";
+import AdminAllClasses from "../Pages/AdminHome/AdminAllClasses";
 
 const router = createBrowserRouter([
     {
@@ -66,6 +67,10 @@ const router = createBrowserRouter([
         {
           path:'addclass',
           element:<AddClass></AddClass>
+        },
+        {
+          path:'allclasses',
+          element:<AdminAllClasses></AdminAllClasses>
         }
       ]
     }

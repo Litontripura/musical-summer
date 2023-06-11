@@ -10,13 +10,14 @@ const PopularClass = () => {
         .then(data=>setPopular(data))
     },[])
     console.log(popular);
+    const slicedInstructors = popular.slice(0, 6);
     return (
       <Container>
           <div className='mt-24'>
            <h1 className='text-primary font-bold text-4xl text-center'>Our Popular Classes</h1>
            <div className='md:grid md:grid-cols-1  p-5 gap-5'>
            {
-                popular.map(item=><PopularCard
+                slicedInstructors.map(item=><PopularCard
                 key={item._id}
                 item={item}
                 ></PopularCard>)

@@ -11,10 +11,10 @@ const Instructors = () => {
       console.log(users);
       const instructors = users.filter(instructor=> instructor.role ==='instructor')
     return (
-        <div>
-            <h1>Our Instructors</h1>
+        <div className='py-10'>
+            <h1 className='text-4xl text-primary font-bold py-5 text-center'>Our Instructors</h1>
            {
-            isLoading ? <Loading></Loading> : <div className='md:grid grid-cols-3 gap-5'>
+            isLoading ? <Loading></Loading> : <div className='md:grid md:grid-cols-4 md:gap-5 grid-col-1'>
             {
                  instructors.map(instractor=><InstractorCard
                  key={instractor._id}

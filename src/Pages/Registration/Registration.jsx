@@ -6,6 +6,7 @@ import { AuthContext } from "../../Providers/AuthProviders";
 import SocialLogin from "../../SocialLogin/SocialLogin";
 import axios from "axios";
 import './Registration.css'
+import Logo from "../../Components/Logo";
 
 const SignUp = () => {
   const notify = () => toast.success('user created successfully');
@@ -70,7 +71,8 @@ const SignUp = () => {
         <div className="md:w-1/3 mx-auto">
           <div className="rounded shadow-2xl bg-secondary border2">
             <form onSubmit={handleSubmit(onSubmit)} className="card-body">
-              <h1 className="text-3xl font-bold text-primary">Sign up now!</h1>
+            <Logo></Logo>
+              <h1 className="text-3xl font-bold text-primary">Sign up</h1>
               <div className="form-control">
                 <label className="label">
                   <span className="label-text text-primary">Name</span>
