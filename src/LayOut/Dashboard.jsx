@@ -47,11 +47,18 @@ const Dashboard = () => {
         </li>
       )}
       {isStudent && (
-        <li className="py-2 md:py-0 lg:py-0">
-          <ActiveLink to="students" activeClassName="text-white">
-            Students Home
+        <>
+          <li className="py-2 md:py-0 lg:py-0">
+          <ActiveLink to="myaddclass" activeClassName="text-white">
+           My Selected Classes
           </ActiveLink>
         </li>
+        <li className="py-2 md:py-0 lg:py-0">
+          <ActiveLink to="students" activeClassName="text-white">
+            my enrolled class
+          </ActiveLink>
+        </li>
+        </>
       )}
 
       <li className="py-2 md:py-0 lg:py-0">
