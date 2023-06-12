@@ -6,6 +6,7 @@ import { AuthContext } from "../Providers/AuthProviders";
 import ActiveLink from "../Routes/ActiveLink";
 import Logo from "../Components/Logo";
 import { RxAvatar } from "react-icons/rx";
+import {motion} from 'framer-motion'
 
 
 const Navbar = () => {
@@ -27,11 +28,13 @@ const Navbar = () => {
 
   const navOptions = (
     <>
-      <li className="py-2 md:py-0 lg:py-0 text-primary">
+      <motion.li 
+      whileHover={{ color:'#FFFFFF'}}
+      className="py-2 md:py-0 lg:py-0 text-primary">
         <ActiveLink exact to="/">
           Home
         </ActiveLink>
-      </li>
+      </motion.li>
       <li className="py-2 md:py-0 lg:py-0 text-primary">
         <ActiveLink to="/instructors">
           Instructors

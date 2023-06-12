@@ -1,10 +1,14 @@
 import Container from "../../../Shared/Container";
+import { motion } from "framer-motion"
+
 
 const Banner = () => {
   return (
     <Container>
       <div className="carousel w-full">
-        <div id="slide1" className="carousel-item relative w-full">
+        <motion.div
+        
+        id="slide1" className="carousel-item relative w-full">
           <img
             src="https://images.unsplash.com/photo-1519076976365-9c64dbd98317?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8cGlhbm8lMjBsZXNzb25zfGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60"
             className="w-full"
@@ -14,13 +18,21 @@ const Banner = () => {
             <a href="#slide2" className="btn btn-circle bg-transparent hover:bg-primary">❯</a>
           </div>
 
-          <div className="flex flex-col justify-center items-center px-5">
-            <h1 className="text-primary font-bold text-4xl">Piano Lessons</h1>
-            <p className="text-primary font-bold">
+          <div  className="flex flex-col justify-center items-center px-5">
+            <motion.h1 
+             initial={{y:-250}}
+             animate={{y:-10}}
+             transition={{delay: 1, duration:0.3, type:'spring', stiffness:300}}
+            className="text-primary font-bold text-4xl">Piano Lessons</motion.h1>
+            <motion.p 
+             initial={{x:-1000}}
+             animate={{x:-10}}
+             transition={{delay: 1, duration:1, type:'spring', stiffness:300}}
+            className="text-primary font-bold">
               Learn to play the piano with our experienced instructors. Master classical pieces or explore your own compositions..
-            </p>
+            </motion.p>
           </div>
-        </div>
+        </motion.div>
         <div id="slide2" className="carousel-item relative w-full">
           <img
             src="https://images.unsplash.com/photo-1525201548942-d8732f6617a0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8Z3VpdGFyfGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60"

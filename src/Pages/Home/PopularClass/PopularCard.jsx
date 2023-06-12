@@ -1,10 +1,14 @@
-import React from 'react';
+
+
 
 const PopularCard = ({item}) => {
- 
+
     const {img,classname,instructor,availableSeats,price,status,enroled}=item
     return (
-        <div className="md:flex items-center w-full md:w-4/5 my-2 mx-auto shadow-lg rounded-lg overflow-hidden p-2 bg-secondary">
+  
+        <div 
+     
+        className="md:flex items-center w-full md:w-4/5 my-2 mx-auto shadow-lg rounded-lg overflow-hidden p-2 bg-secondary">
       <img
         className="md:w-3/5 md:h-96 object-cover object-center"
         src={img}
