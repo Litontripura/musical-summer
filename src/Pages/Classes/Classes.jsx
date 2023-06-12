@@ -10,7 +10,7 @@ const Classes = () => {
         fetch('https://summer-school-server-inky.vercel.app/classes')
         .then(res=>res.json())
         .then(data=>{
-            console.log(data);
+          
             setClasses(data)
             setLoading(false)
         })

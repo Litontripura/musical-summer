@@ -26,7 +26,7 @@ const SocialLogin = () => {
       } catch (error) {
         console.error("Google error:", error);
       }
-    };
+    }; 
     return (
         <>
         <div className="divider bg-primary h-[1px]"></div>

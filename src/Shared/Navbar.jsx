@@ -11,6 +11,7 @@ import {motion} from 'framer-motion'
 
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
+  console.log(user);
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleNavbar = () => {

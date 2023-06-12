@@ -1,17 +1,22 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import PopularCard from './PopularCard';
 import Container from '../../../Shared/Container';
 import { motion } from "framer-motion"
+import { AuthContext } from '../../../Providers/AuthProviders';
 
 
 const PopularClass = () => {
+  
     const [popular, setPopular]=useState([])
     useEffect(()=>{
         fetch('https://summer-school-server-inky.vercel.app/classShort')
         .then(res=>res.json())
         .then(data=>setPopular(data))
     },[])
-    console.log(popular);
+
+
+   
+ 
     const slicedInstructors = popular.slice(0, 6);
    
 

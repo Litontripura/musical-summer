@@ -5,16 +5,19 @@ import ActiveLink from "../Routes/ActiveLink";
 import { useContext } from "react";
 import { AuthContext } from "../Providers/AuthProviders";
 import Container from "../Shared/Container";
+import useAdmin from "../Hooks/useAdmin";
 
 const Dashboard = () => {
   // TODO
-  const isAdmin = true;
+  const isAdmin=useAdmin()
+  
+  // const isAdmin = true;
   const isInstructor = true;
-  const isStudent = true;
+  const isStudent = false;
   const { user } = useContext(AuthContext);
   const navOptions = (
     <>
-      {isAdmin && (
+      {isAdmin === true && (
         <>
          
           <li className="py-2 md:py-0 lg:py-0">
@@ -36,7 +39,7 @@ const Dashboard = () => {
           </li>
         </>
       )}
-      {isInstructor && (
+      {isInstructor === true && (
         <li className="py-2 md:py-0 lg:py-0">
           <ActiveLink to="instructorsHome" activeClassName="text-white">
             Instructors Home

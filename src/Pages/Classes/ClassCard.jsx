@@ -1,7 +1,10 @@
-import React, { useContext } from 'react';
-import { AuthContext } from '../../Providers/AuthProviders';
+
+
 import Swal from 'sweetalert2';
 import { useLocation, useNavigate } from 'react-router-dom';
+import { AuthContext } from '../../Providers/AuthProviders';
+import { useContext } from 'react';
+import {motion} from 'framer-motion';
 
 const ClassCard = ({ item }) => {
 const navigate = useNavigate()
@@ -9,7 +12,7 @@ const location = useLocation()
 const {user}=useContext(AuthContext)
   const { _id, clasname, instructor, description, img, price,availableSeats,status } = item
 
-  const handleAddClass = add =>{
+  const handleAddClass = () =>{
 
     if(user && user.email){
       const selectedClass = { classId: _id,classname: clasname,instructor: instructor,description: description,img: img,price: price,availableSeats: availableSeats,status: status , email: user.email}
@@ -36,7 +39,7 @@ const {user}=useContext(AuthContext)
         }
       })
     }
-
+ 
     else{
       Swal.fire({
         title: 'please login to select class',
@@ -52,7 +55,14 @@ const {user}=useContext(AuthContext)
         }
       })
     }
-    console.log(add);
+   
+  }
+  const buttonVariants ={
+    hover:{
+      scale:1.1,
+      textShadow: "0px 0px 8px rgb(255,255,255)",
+      boxShadow: "0px 0px 8px rgb(255,255,255)",
+    }
   }
 
   return (
@@ -65,7 +75,10 @@ const {user}=useContext(AuthContext)
         <p className='text-white'>price ${price}</p>
         <p className='text-white'>Available Seats {availableSeats}</p>
         <div className="card-actions flex justify-center items-center">
-          <button onClick={()=>handleAddClass(item)} className="btn btn-accent text-primary absolute bottom-2 right-2 mx-auto">select</button>
+          <motion.button 
+          variants={buttonVariants}
+          whileHover='hover'
+          onClick={()=>handleAddClass(item)} className="btn btn-accent text-primary absolute bottom-2 right-2 mx-auto">select class</motion.button>
         </div>
       </div>
     </div>

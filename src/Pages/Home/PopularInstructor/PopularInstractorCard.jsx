@@ -2,7 +2,7 @@ import React from 'react';
 
 const PopularInstractorCard = ({instuctor}) => {
     const {name, role, photo , email}=instuctor
-    console.log(instuctor);
+  
     return (
         <div className="md:flex flex-row-reverse items-center w-full md:w-4/5 my-2 mx-auto shadow-lg rounded-lg overflow-hidden p-2 bg-primary">
         <img

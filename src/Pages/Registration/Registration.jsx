@@ -9,6 +9,7 @@ import './Registration.css'
 import Logo from "../../Components/Logo";
 
 const SignUp = () => {
+  
   const notify = () => toast.success('user created successfully');
   const {
     register,
@@ -51,8 +52,9 @@ const SignUp = () => {
               })
               .then((response) => {
                 if (response.data.insertedId) {
-                  notify()
                   reset();
+                  notify()
+                 
                   
                   navigate("/");
                 }

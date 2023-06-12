@@ -8,7 +8,7 @@ const PopularInstructor = () => {
         .then(res=>res.json())
         .then(data=>setInstructor(data))
     },[])
-    console.log(instructors);
+   
     const slicedInstructors = instructors.slice(0, 6);
     return (
         <div className='py-10'>

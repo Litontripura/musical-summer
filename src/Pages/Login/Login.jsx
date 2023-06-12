@@ -1,16 +1,20 @@
 import { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FaEye, FaEyeSlash, FaRegEyeSlash } from 'react-icons/fa';
 import './Login.css';
 
 import SocialLogin from "../../SocialLogin/SocialLogin";
 import { AuthContext } from "../../Providers/AuthProviders";
 import Logo from "../../Components/Logo";
+import Swal from "sweetalert2";
 
 const Login = () => {
   const [error, setError] = useState('');
   const [showPassword, setShowPassword] = useState(false);
+ const navigate = useNavigate()
+ const location = useLocation()
+ const from = location.state?.from?.pathname || '/';
 
   const {
     register,
@@ -18,7 +22,7 @@ const Login = () => {
     formState: { errors },
   } = useForm();
   const { signIn, loading } = useContext(AuthContext);
-  const navigate = useNavigate();
+ 
 
   const onSubmit = (data) => {
     const email = data.email;
@@ -26,7 +30,14 @@ const Login = () => {
     console.log(data);
     signIn(email, password)
       .then(result => {
+        const user = result.user
+        Swal.fire({
+          title:"User Login successfully",
+      
+        });
+        navigate(from,{replace: true})
         setError('');
+
         console.log(result);
       })
       .catch(err => {

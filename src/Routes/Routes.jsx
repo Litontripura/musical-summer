@@ -76,6 +76,7 @@ const router = createBrowserRouter([
         {
           path:'myaddclass',
           element:<MyClass></MyClass>
+          
         }
       ]
     }
