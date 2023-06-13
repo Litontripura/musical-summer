@@ -14,6 +14,9 @@ import Error from "../Pages/Error/Error";
 import AddClass from "../Pages/Addclass/AddClass";
 import AdminAllClasses from "../Pages/AdminHome/AdminAllClasses";
 import MyClass from "../Pages/myClass/MyClass";
+import PrivetRout from "./PrivetRout";
+import AdminRout from "./AdminRout";
+import MyAddClasses from "../Pages/MyAddClasses/MyAddClasses";
 
 const router = createBrowserRouter([
     {
@@ -46,7 +49,7 @@ const router = createBrowserRouter([
     },
     {
       path:"/dashboard",
-      element:<Dashboard></Dashboard>,
+      element:<PrivetRout><Dashboard></Dashboard></PrivetRout>,
       errorElement:<Error></Error>,
       children:[
         {
@@ -58,8 +61,8 @@ const router = createBrowserRouter([
           element:<AdminHome></AdminHome>
         },
         {
-          path:'instructorsHome',
-          element:<InstructorHome></InstructorHome>
+          path:'myaddedclass',
+          element:<MyAddClasses></MyAddClasses>
         },
         {
           path:'allusers',

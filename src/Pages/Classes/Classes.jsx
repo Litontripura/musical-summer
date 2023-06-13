@@ -15,6 +15,7 @@ const Classes = () => {
             setLoading(false)
         })
     },[])
+    const aprovedClass = classes.filter(item=> item.status === 'approved')
     if(loading){
         return <Loading></Loading>
     }
@@ -23,7 +24,7 @@ const Classes = () => {
          <div className='mx-auto bg-accent'>
           <div className='md:grid grid-cols-3 justify-center items-center mx-auto gap-5'>
           {
-            classes.map(item=>
+            aprovedClass.map(item=>
                 <ClassCard
                 key={item._id}
                 item={item}

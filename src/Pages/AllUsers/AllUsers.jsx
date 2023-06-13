@@ -8,6 +8,8 @@ const AllUsers = () => {
   const admin = () => toast.success('Add admin successfully');
   const instructor = () => toast.success('Add instructor successfully');
   const userDelete = () => toast.success('User deleted successfully');
+  
+
   const { data: users = [], isLoading, refetch } = useQuery(["users"], async () => {
     const res = await fetch("https://summer-school-server-inky.vercel.app/users");
     return res.json();

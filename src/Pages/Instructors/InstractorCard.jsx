@@ -2,6 +2,7 @@ import React from 'react';
 
 const InstractorCard = ({instractor}) => {
     const {name, email, role, photo}=instractor
+   
     return (
         <div className="card mt-10 md:m-0 bg-primary shadow-xl p-1">
   <figure><img src={photo} alt="Shoes" /></figure>

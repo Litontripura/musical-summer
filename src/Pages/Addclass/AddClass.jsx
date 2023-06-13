@@ -19,7 +19,8 @@ const AddClass = () => {
       },
       body: JSON.stringify(classInfo),
     })
-      .then((res) => res.json())
+      .then((res) => res.json()),
+     
       
   );
   
@@ -27,32 +28,35 @@ const AddClass = () => {
     event.preventDefault();
     const form = event.target;
     const img = form.image.value;
-    const classname = form.classname.value;
-    const instructor = form.instructor.value;
+    const cours = form.cours.value;
+  
     const availableSeats = form.availableSeats.value;
     const price = form.price.value;
-    const enroled = form.enroled.value;
+
   
     const classInfo = {
       img: img,
-      classname: classname,
-      displayName: instructor,
+      cours: cours,
+      displayName: user.displayName,
       availableSeats: availableSeats,
       price: price,
       status: 'pending',
-      enroled: enroled,
+    
       email: user.email,
     };
   
     addClassMutation.mutate(classInfo);
+    notify()
+    form.reset()
   };
     return (
         <div className="w-full md:w-1/2 mx-auto border-primary">
         <h1 className="text-2xl font-bold text-center my-8">Add New Class</h1>
+        <Toaster></Toaster>
         <form onSubmit={handleSubmit}>
           <div className="mb-4">
             <label className="block text-primary font-bold mb-2" htmlFor="image">
-              Image URL
+              Upload image
             </label>
             <input
               className="shadow appearance-none border rounded w-full py-2 px-3 text-primary leading-tight focus:outline-none focus:shadow-outline"
@@ -70,7 +74,7 @@ const AddClass = () => {
             <input
               className="shadow appearance-none border rounded w-full py-2 px-3 text-primary leading-tight focus:outline-none focus:shadow-outline"
               id="name"
-              name="classname"
+              name="cours"
               type="text"
               placeholder="Enter the class name"
               required
@@ -83,9 +87,10 @@ const AddClass = () => {
             <input
               className="shadow appearance-none border rounded w-full py-2 px-3 text-primary leading-tight focus:outline-none focus:shadow-outline"
               id="instructor"
-              name="instructor"
+           
               type="text"
               defaultValue={user?.displayName}
+              
               readOnly
               placeholder="Enter the instructor's name"
               required
@@ -119,19 +124,7 @@ const AddClass = () => {
               required
             />
           </div>
-          <div className="mb-4">
-            <label className="block text-primary font-bold mb-2" htmlFor="availableSeats">
-             enrolled Student
-            </label>
-            <input
-              className="shadow appearance-none border rounded w-full py-2 px-3 text-primary leading-tight focus:outline-none focus:shadow-outline"
-              id="availableSeats"
-              name="enroled"
-              type="number"
-              placeholder="Enter the number of available seats"
-              required
-            />
-          </div>
+         
           <div className="mb-4">
             <label className="block text-primary font-bold mb-2" htmlFor="price">
               Price
