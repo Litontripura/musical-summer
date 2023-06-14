@@ -2,6 +2,7 @@ import { useQuery } from '@tanstack/react-query';
 import React from 'react';
 import InstractorCard from './InstractorCard';
 import Loading from '../../Components/Loading';
+import { Helmet } from 'react-helmet-async';
 
 const Instructors = () => {
     const { data: users = [],isLoading, refetch } = useQuery(["users"], async () => {
@@ -12,6 +13,10 @@ const Instructors = () => {
       const instructors = users.filter(instructor=> instructor.role ==='instructor')
     return (
         <div className='py-10'>
+                <Helmet>
+        <title>Home | instructors</title>
+        <link rel="canonical" href="https://www.tacobell.com/" />
+      </Helmet>
             <h1 className='text-4xl text-primary font-bold py-5 text-center'>Our Instructors</h1>
            {
             isLoading ? <Loading></Loading> : <div className='md:grid md:grid-cols-4 md:gap-5 grid-col-1'>

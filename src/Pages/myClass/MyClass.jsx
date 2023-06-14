@@ -4,6 +4,7 @@ import Loading from "../../Components/Loading";
 import MyClassCard from "./MyClassCard";
 import { useQuery } from "@tanstack/react-query";
 import { Toaster, toast } from "react-hot-toast";
+import { Helmet } from "react-helmet-async";
 
 const MyClass = () => {
   
@@ -42,7 +43,11 @@ const MyClass = () => {
 
   return (
     <div>
-      <h1 className="text-4xl text-primary text-center font-bold">My selected Classes</h1>
+         <Helmet>
+        <title>dashboard | myselectectclasses</title>
+        <link rel="canonical" href="https://www.tacobell.com/" />
+      </Helmet>
+      <h1 className="text-4xl text-primary text-center font-bold">My selected Classes : {myclass.length}</h1>
       <Toaster />
       {myclass.map((item) => (
         <MyClassCard

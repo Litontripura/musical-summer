@@ -26,7 +26,7 @@ const PopularClass = () => {
            <motion.h1 
             initial={{x:-1000}}
             animate={{x:-10}}
-            transition={{delay: 1, duration:0.3, type:'spring', stiffness:300}}
+            transition={{delay: 2, duration:0.3, type:'spring', stiffness:300}}
            className='text-primary font-bold text-4xl text-center'>Our Popular Classes</motion.h1>
            <div className='md:grid md:grid-cols-1  p-5 gap-5'>
            {

@@ -3,6 +3,7 @@ import { AiTwotoneDelete } from "react-icons/ai";
 import "./alluser.css";
 import Loading from "../../Components/Loading";
 import toast, { Toaster } from 'react-hot-toast';
+import { Helmet } from "react-helmet-async";
 
 const AllUsers = () => {
   const admin = () => toast.success('Add admin successfully');
@@ -51,6 +52,10 @@ const AllUsers = () => {
   
   return (
     <div className="overflow-x-auto text-primary">
+         <Helmet>
+        <title>dashboard | allusers</title>
+        <link rel="canonical" href="https://www.tacobell.com/" />
+      </Helmet>
       <h1 className="text-center font-bold text-2xl">All users</h1>
       
       {isLoading ? (

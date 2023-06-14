@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import Loading from '../../Components/Loading';
 import toast, { Toaster } from 'react-hot-toast';
+import { Helmet } from 'react-helmet-async';
 
 const AdminAllClasses = () => {
   const [classes, setClasses] = useState([]);
@@ -63,6 +64,10 @@ const AdminAllClasses = () => {
 
   return (
     <div>
+         <Helmet>
+        <title>dashboard | manageclasses</title>
+        <link rel="canonical" href="https://www.tacobell.com/" />
+      </Helmet>
       <h1 className="text-primary text-4xl font-bold text-center py-5">Manage All Classes</h1>
       <Toaster />
 

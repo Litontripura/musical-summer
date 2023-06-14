@@ -2,6 +2,7 @@ import  { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../../Providers/AuthProviders';
 
 import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 
 const MyAddClasses = () => {
   const { user } = useContext(AuthContext);
@@ -18,6 +19,10 @@ const MyAddClasses = () => {
 
   return (
     <div>
+         <Helmet>
+        <title>dashboard / my added classes</title>
+        <link rel="canonical" href="https://www.tacobell.com/" />
+      </Helmet>
       <h1 className='text-primary font-bold text-center text-4xl'>My Added Classes : {myaddedClasses.length}</h1>
       <div className="grid grid-cols-3 gap-3">
         {myaddedClasses?.map(item => (

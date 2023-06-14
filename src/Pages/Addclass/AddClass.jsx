@@ -2,6 +2,7 @@ import { useMutation } from "@tanstack/react-query";
 import { useContext } from "react";
 import { AuthContext } from "../../Providers/AuthProviders";
 import toast, { Toaster } from 'react-hot-toast';
+import { Helmet } from "react-helmet-async";
 
 
 
@@ -53,6 +54,10 @@ const AddClass = () => {
   };
     return (
         <div className="w-full md:w-1/2 mx-auto border-primary">
+             <Helmet>
+        <title>dashboard | addclass</title>
+        <link rel="canonical" href="https://www.tacobell.com/" />
+      </Helmet>
         <h1 className="text-2xl font-bold text-center my-8">Add New Class</h1>
         <Toaster></Toaster>
         <form onSubmit={handleSubmit}>

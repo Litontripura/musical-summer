@@ -6,7 +6,7 @@ import Instructors from '../Pages/Instructors/Instructors';
 import Classes from '../Pages/Classes/Classes';
 import Dashboard from '../LayOut/Dashboard';
 import Login from '../Pages/Login/Login';
-import StudentsHome from '../Pages/StudentsHome/StudentsHome';
+
 import AllUsers from '../Pages/AllUsers/AllUsers';
 import Error from '../Pages/Error/Error';
 import AddClass from '../Pages/Addclass/AddClass';
@@ -50,10 +50,7 @@ const router = createBrowserRouter([
     element: <PrivetRout><Dashboard></Dashboard></PrivetRout>,
     errorElement: <Error></Error>,
     children: [
-      {
-        path: 'students',
-        element: <StudentsHome></StudentsHome>
-      },
+   
       {
         path: 'myaddedclass',
         element: <MyAddClasses></MyAddClasses>

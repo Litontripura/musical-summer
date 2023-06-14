@@ -4,6 +4,7 @@ import Footer from '../Shared/Footer';
 import Navbar from '../Shared/Navbar';
 import { Outlet } from 'react-router-dom';
 import { motion } from "framer-motion"
+import { Helmet } from "react-helmet-async";
 
 const Main = () => {
     return (
