@@ -1,20 +1,24 @@
-import { useQuery } from "@tanstack/react-query";
+
+
 import useAuth from "./useAuth";
-import useAxiosSecure from "./useAxiosSecure";
+import { useState } from "react";
+import { useEffect } from "react";
+
+
+
 
 const useAdmin = () => {
   const { user } = useAuth();
 
-  const { data: isAdmin, isLoading: isAdminLoading } = useQuery({
-    queryKey: ["isAdmin", user?.email],
-    queryFn: async () => {
-      const res = await fetch(`http://localhost:5000/user/admin/${user?.email}`);
-      const data = await res.json(); // Extract the data from the response
-      return data; // Return the extracted data
-    },
-  });
-
-  return [isAdmin, isAdminLoading];
+  const [isAdmin, setIsAdmin]= useState()
+  useEffect(()=>{
+    fetch(`https://summer-school-server-inky.vercel.app/user/admin/${user?.email}`)
+    .then(res=>res.json())
+    .then(data=>setIsAdmin(data.admin))
+  },[setIsAdmin])
+     
+    return isAdmin;
+ 
 };
 
 export default useAdmin;

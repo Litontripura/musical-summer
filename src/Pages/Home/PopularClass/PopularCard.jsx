@@ -3,7 +3,8 @@
 
 const PopularCard = ({item}) => {
 
-    const {img,classname,instructor,availableSeats,price,status,enroled}=item
+    const {img,cours,displayName,availableSeats,price,status,enrol}=item
+
     return (
   
         <div 
@@ -15,12 +16,12 @@ const PopularCard = ({item}) => {
         alt="Course"
       />
       <div className="px-6 py-4">
-        <div className="font-bold text-2xl text-primary mb-2">{classname}</div>
-        <p className="text-primary mb-3">Instractor: {instructor}</p>
+        <div className="font-bold text-2xl text-primary mb-2">{cours}</div>
+        <p className="text-primary mb-3">Instractor: {displayName}</p>
         <p className="text-primary mb-3">Available Seats: {availableSeats}</p>
         <p className="text-primary mb-3">Price: ${price}</p>
         <p className="text-primary mb-3">Status: {status}</p>
-        <p className="text-primary mb-3">Enrolled: {enroled}</p>
+        <p className="text-primary mb-3">Enrolled: {enrol}</p>
       </div>
     </div>
     );

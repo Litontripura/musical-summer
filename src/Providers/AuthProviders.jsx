@@ -11,7 +11,7 @@ const AuthProviders = ({children}) => {
     const [user, setUser]=useState(null)
 
     const [loading, setLoading]= useState(true)
-    console.log(user);
+
 
    const createUser = (email, password)=>{
     setLoading(true)
@@ -38,19 +38,19 @@ const AuthProviders = ({children}) => {
    }
    useEffect(()=>{
     const unsubscribe = onAuthStateChanged(auth, currentUser=>{
-       
+        setUser(currentUser)
+        setLoading(false)
        if(currentUser){
         axios.post('https://summer-school-server-inky.vercel.app/jwt',{email: currentUser})
         .then(data=>{
-            // console.log(data.data.token);
+           
             localStorage.setItem("token", data.data.token)
         })
        }
        else{
         localStorage.removeItem('token')
        }
-       setUser(currentUser)
-       setLoading(false)
+     
      
     })
     return ()=>{

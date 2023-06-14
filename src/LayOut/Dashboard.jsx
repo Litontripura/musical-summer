@@ -1,4 +1,6 @@
-import { FaBars } from "react-icons/fa";
+import { FaBars, FaHome, FaUsersCog , FaUsers} from "react-icons/fa";
+import { MdOutlineClass} from "react-icons/md";
+
 import { Outlet } from "react-router-dom";
 import "./Dashboard.css";
 import ActiveLink from "../Routes/ActiveLink";
@@ -6,48 +8,44 @@ import { useContext } from "react";
 import { AuthContext } from "../Providers/AuthProviders";
 import Container from "../Shared/Container";
 import useAdmin from "../Hooks/useAdmin";
-import instructor from "../Hooks/useAdmin";
-import useInstructor from "../Hooks/useInstructor";
+
+
+
 
 
 const Dashboard = () => {
   // TODO
-  // const isAdmin = useAdmin()
-  
-  const isAdmin = true;
-  // const [isAdmin]=useAdmin()
-   const isInstructor = true
-  // console.log(isAdmin);
-  // const isInstructor = true;
-  const isStudent = true;
+ 
+   
+   
+   const isInstructor = false
+   const isAdmin = useAdmin()
+   console.log(isAdmin);
+  const isStudent = false;
   const { user } = useContext(AuthContext);
   const navOptions = (
     <>
-      {isAdmin && (
+      {isAdmin == true &&  (
         <>
-         
-          <li className="py-2 md:py-0 lg:py-0">
-            <ActiveLink exact to="adminHome" activeClassName="text-white">
-              Admin Home
-            </ActiveLink>
-          </li>
-          <li className="py-2 md:py-0 lg:py-0">
+      
+          <li className="py-2 md:py-0 lg:py-0 text-white">
+       
             <ActiveLink to="allusers" activeClassName="text-white">
-              Manage users
+             <FaUsers></FaUsers> Manage users
             </ActiveLink>
            
           </li>
-          <li className="py-2 md:py-0 lg:py-0">
+          <li className="py-2 md:py-0 lg:py-0 text-white">
             <ActiveLink to="allclasses" activeClassName="text-white">
-              Manage classes
+             <MdOutlineClass></MdOutlineClass> Manage classes
             </ActiveLink>
            
           </li>
         </>
       )}
-      {isInstructor && (
-        <li className="py-2 md:py-0 lg:py-0">
-          <ActiveLink to="myaddedclass" activeClassName="text-white">
+      {isInstructor == true && (
+        <li className="py-2 md:py-0 lg:py-0 text-white">
+          <ActiveLink  to="myaddedclass" activeClassName="text-white">
             my added class 
           </ActiveLink>
           <ActiveLink to="addclass" activeClassName="text-white">
@@ -57,12 +55,12 @@ const Dashboard = () => {
       )}
       {isStudent && (
         <>
-          <li className="py-2 md:py-0 lg:py-0">
-          <ActiveLink to="myaddclass" activeClassName="text-white">
+          <li className="py-2 md:py-0 lg:py-0 text-white">
+          <ActiveLink to="myselectedclass" activeClassName="text-white">
            My Selected Classes
           </ActiveLink>
         </li>
-        <li className="py-2 md:py-0 lg:py-0">
+        <li className="py-2 md:py-0 lg:py-0 text-white">
           <ActiveLink to="students" activeClassName="text-white">
             my enrolled class
           </ActiveLink>
@@ -70,9 +68,9 @@ const Dashboard = () => {
         </>
       )}
 
-      <li className="py-2 md:py-0 lg:py-0">
+      <li className="py-2 md:py-0 lg:py-0 text-white">
         <ActiveLink to="/" activeClassName="text-white">
-          Home
+         <FaHome></FaHome>Back to Home
         </ActiveLink>
       </li>
     </>

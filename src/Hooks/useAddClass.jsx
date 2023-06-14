@@ -2,23 +2,23 @@
 import { useQuery } from '@tanstack/react-query'
 import { useContext } from 'react';
 import { AuthContext } from '../Providers/AuthProviders';
+import useAxiosSecure from './useAxiosSecure';
+
+
 
 
 const useAddClass = () => {
     const {user}=useContext(AuthContext)
-    const token = localStorage.getItem('token')
+   
+    const [axiosSecure]= useAxiosSecure()
      console.log(user);
    
      const {refetch, data: myaddclass =[]}= useQuery({
         queryKey: ['myaddclass', user?.email],
       
         queryFn: async ()=>{
-            const res = await fetch(`https://summer-school-server-inky.vercel.app/myaddclass?email=${user?.email}`,{
-                headers:{
-                    authorization :`bearer ${token}`
-                }
-            });
-            return res.json()
+            const res = await axiosSecure(`/myaddclass?email=${user?.email}`);
+            return res.data
         },
      })
 

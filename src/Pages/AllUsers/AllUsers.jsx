@@ -68,7 +68,7 @@ const AllUsers = () => {
               <th>delete user</th>
             </tr>
           </thead>
-          <tbody>
+          <tbody>{/* Remove whitespace between tags */}
             {users.map((user, index) => (
               <tr key={user._id}>
                 <td>{index + 1}</td>
@@ -81,9 +81,9 @@ const AllUsers = () => {
                 </td>
                 <td>{user.email}</td>
                 <td>{user.role}</td>
-                <td>
+                <td className="">
                   {user.role === "admin" ? (
-                    <div className="badge badge-primary cursor-pointer text-white bg-gray-300" disabled>
+                    <div  className="badge badge-primary cursor-pointer text-white bg-gray-300" disabled>
                       make admin
                     </div>
                   ) : (
@@ -92,11 +92,11 @@ const AllUsers = () => {
                     </div>
                   )}
                   {user.role === "instructor" ? (
-                    <div className="badge badge-primary ml-2 text-white bg-gray-300 cursor-pointer" disabled>
+                    <div className="badge badge-primary text-white bg-gray-300 cursor-pointer" disabled>
                       make instructor
                     </div>
                   ) : (
-                    <div onClick={() => handleMakeInstructor(user._id)} className="badge badge-primary ml-2 text-white cursor-pointer">
+                    <div onClick={() => handleMakeInstructor(user._id)} className="badge badge-primary  text-white cursor-pointer">
                       make instructor
                     </div>
                   )}

@@ -29,15 +29,17 @@ const AddClass = () => {
     const form = event.target;
     const img = form.image.value;
     const cours = form.cours.value;
-  
+    const enrol = form.enrol.value;
     const availableSeats = form.availableSeats.value;
     const price = form.price.value;
+    const displayName = form.displayName.value;
 
   
     const classInfo = {
+      enrol: enrol,
       img: img,
       cours: cours,
-      displayName: user.displayName,
+      displayName: displayName,
       availableSeats: availableSeats,
       price: price,
       status: 'pending',
@@ -90,7 +92,7 @@ const AddClass = () => {
            
               type="text"
               defaultValue={user?.displayName}
-              
+              name="displayName"
               readOnly
               placeholder="Enter the instructor's name"
               required
@@ -119,6 +121,19 @@ const AddClass = () => {
               className="shadow appearance-none border rounded w-full py-2 px-3 text-primary leading-tight focus:outline-none focus:shadow-outline"
               id="availableSeats"
               name="availableSeats"
+              type="number"
+              placeholder="Enter the number of available seats"
+              required
+            />
+          </div>
+          <div className="mb-4">
+            <label className="block text-primary font-bold mb-2" htmlFor="availableSeats">
+             enrol
+            </label>
+            <input
+              className="shadow appearance-none border rounded w-full py-2 px-3 text-primary leading-tight focus:outline-none focus:shadow-outline"
+              id="availableSeats"
+              name="enrol"
               type="number"
               placeholder="Enter the number of available seats"
               required
